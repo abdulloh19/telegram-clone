@@ -23,7 +23,7 @@ class Content extends React.Component {
   };
 
   render() {
-    const { selectedUser } = this.props;
+    const { selectedUser, history } = this.props;
     const { inputValue } = this.state;
     return (
       <div>
@@ -51,6 +51,7 @@ class Content extends React.Component {
                     value={inputValue}
                   />
                   <button
+                    type="submit"
                     className="btn btn-success"
                     onClick={this.sendMessage}
                   >
@@ -59,10 +60,26 @@ class Content extends React.Component {
                 </div>
               </div>
             </div>
-            <div
-              className="row bg-white mt-3"
-              style={{ height: "600px" }}
-            ></div>
+            <div className="row bg-white mt-3" style={{ height: "600px" }}>
+              <div className="col-md-12">
+                {console.log(history)}
+                {history.map((item, index) => (
+                  <div key={index} className="row">
+                    <div
+                      className={`col-md-7 ${
+                        item.id === 3
+                      } ? 'offset-5' "color-blue" : ''`}
+                    >
+                      <p className="text">
+                        {item.text}
+
+                        <span className="mx-2">{item.date}</span>
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         ) : (
           <div></div>
