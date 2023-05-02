@@ -16,7 +16,7 @@
 }
 
 .hoverBorder:hover {
-    background-color: rgb(195, 195, 251);
+    background-color: rgb(221, 221, 237);
     /* color: white; */
 }
 .hoverBorder:active{

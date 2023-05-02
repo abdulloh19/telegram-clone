@@ -3,8 +3,10 @@ import Sider from "./components/Sider/Sider";
 import Content from "./components/content/Content";
 import "./components/index.css";
 import "./App.css";
+import Task from "./components/tasks/task";
 
 class App extends React.Component {
+
   state = {
     users: [],
     selectedUser: "",
@@ -43,14 +45,8 @@ class App extends React.Component {
           (item.from === 3 && item.to === user.id) ||
           (item.from === user.id && item.to === 3)
       );
-      // const historyy = messages.filter(
-      //   (item) =>
-      //     (item.from === 1 && item.to === 3) ||
-      //     (item.from === 1 && item.to === user.id)
-      // );
       this.setState({
         history,
-        // history: historyy,
       });
       console.log(this.state.history);
     }
@@ -110,7 +106,7 @@ class App extends React.Component {
     const { users, selectedUser, history } = this.state;
     return (
       <div className="container-fluid">
-        <div className="row">
+        {/* <div className="row">
           <div className="col-md-3 sider-parent">
             <Sider
               arrUsers={this.arrUsers}
@@ -126,7 +122,12 @@ class App extends React.Component {
               history={history}
             />
           </div>
-        </div>
+        </div> */}
+         <div className="row">
+          <div className="col-md-12">
+            <Task />
+          </div>
+         </div>
       </div>
     );
   }

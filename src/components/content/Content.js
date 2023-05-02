@@ -65,12 +65,8 @@ class Content extends React.Component {
                 {console.log(history)}
                 {history.map((item, index) => (
                   <div key={index} className="row">
-                    <div
-                      className={`col-md-7 ${
-                        item.id === 3
-                      } ? 'offset-5' "color-blue" : ''`}
-                    >
-                      <p className="text">
+                    <div>
+                      <p className="text-capitalize mt-3 ">
                         {item.text}
 
                         <span className="mx-2">{item.date}</span>
