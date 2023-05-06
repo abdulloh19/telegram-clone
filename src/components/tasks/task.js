@@ -81,7 +81,7 @@ class Task extends React.Component {
     const state = this.state.tasks;
     state.splice(index, 1);
     this.setState({
-      tasks: this.state.tasks,
+      state: this.state.tasks,
     });
   };
 

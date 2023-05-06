@@ -1,12 +1,13 @@
 import React from "react";
-import Sider from "./components/Sider/Sider";
-import Content from "./components/content/Content";
-import "./components/index.css";
-import "./App.css";
-import Task from "./components/tasks/task";
+import Option1 from "./components/options/option1";
+import Option2 from "./components/options/option2";
+import Option3 from "./components/options/option3";
+import Option4 from "./components/options/option4";
+import Option5 from "./components/options/option5";
+import { Route } from "react-router-dom";
+import "./components/options/option.css";
 
 class App extends React.Component {
-
   state = {
     users: [],
     selectedUser: "",
@@ -103,7 +104,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { users, selectedUser, history } = this.state;
+    // const { users, selectedUser, history } = this.state;
     return (
       <div className="container-fluid">
         {/* <div className="row">
@@ -123,11 +124,38 @@ class App extends React.Component {
             />
           </div>
         </div> */}
-         <div className="row">
-          <div className="col-md-12">
-            <Task />
+        <div className="row">
+          <div className="col-md-12 d-flex justify-content-evenly">
+            <div className=" wrapper col-md-2 mt-5">
+              <a className="text-light bg-info p-2 m-3 " href="/option1">
+                Option1
+              </a>
+
+              <a className="text-light bg-info p-2 m-3 " href="/option2">
+                Option2
+              </a>
+
+              <a className="text-light bg-info p-2 m-3 " href="/option3">
+                Option3
+              </a>
+
+              <a className="text-light bg-info p-2 m-3 " href="/option4">
+                Option4
+              </a>
+
+              <a className="text-light bg-info p-2 m-3 " href="/option5">
+                Option5
+              </a>
+            </div>
+            <div className="col-md-6 mt-5 card card-body">
+              <Route path="/option1" component={Option1} />
+              <Route path="/option2" component={Option2} />
+              <Route path="/option3" component={Option3} />
+              <Route path="/option4" component={Option4} />
+              <Route path="/option5" component={Option5} />
+            </div>
           </div>
-         </div>
+        </div>
       </div>
     );
   }
