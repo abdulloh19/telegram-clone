@@ -1,11 +1,15 @@
 import React from "react";
+import { Route, Switch, Link } from "react-router-dom";
 import Option1 from "./components/options/option1";
 import Option2 from "./components/options/option2";
 import Option3 from "./components/options/option3";
 import Option4 from "./components/options/option4";
 import Option5 from "./components/options/option5";
-import { Route } from "react-router-dom";
 import "./components/options/option.css";
+import InHome from "./components/cars/InHome";
+import Login from "./components/cars/Login";
+import CarsTable from "./components/cars/CarsTable";
+import OneCarPage from "./components/cars/OneCarPage";
 
 class App extends React.Component {
   state = {
@@ -13,6 +17,7 @@ class App extends React.Component {
     selectedUser: "",
     messages: [],
     history: [],
+    active: 0,
   };
 
   arrUsers = (FirstName, LasttName, Phone) => {
@@ -106,8 +111,9 @@ class App extends React.Component {
   render() {
     // const { users, selectedUser, history } = this.state;
     return (
-      <div className="container-fluid">
-        {/* <div className="row">
+      <div className="container">
+        <div>
+          {/* <div className="row">
           <div className="col-md-3 sider-parent">
             <Sider
               arrUsers={this.arrUsers}
@@ -124,8 +130,9 @@ class App extends React.Component {
             />
           </div>
         </div> */}
+        </div>
         <div className="row">
-          <div className="col-md-12 d-flex justify-content-evenly">
+          {/* <div className="col-md-12 d-flex justify-content-evenly">
             <div className=" wrapper col-md-2 mt-5">
               <a className="text-light bg-info p-2 m-3 " href="/option1">
                 Option1
@@ -154,8 +161,45 @@ class App extends React.Component {
               <Route path="/option4" component={Option4} />
               <Route path="/option5" component={Option5} />
             </div>
-          </div>
+          </div> */}
         </div>
+        <div className="mt-5">
+          {this.state.active === "1" ? (
+            <Link className="text-bg-info p-3 text-light" to="/carsTabel">
+              Cars table
+            </Link>
+          ) : (
+            ""
+          )}
+
+          {this.state.active === "3" ? (
+            <Link
+              className="text-bg-info text-light m-3 p-3 mt-5"
+              to="/oneCarsTable"
+            >
+              One Cars Table
+            </Link>
+          ) : (
+            ""
+          )}
+          {<CarsTable /> ? (
+            <Link className="text-bg-info text-light m-3 p-3 mt-5" to="/home">
+              Home
+            </Link>
+          ) : (
+            ""
+          )}
+        </div>
+
+        <Switch>
+          <Route
+            path="/carsTabel/:id/:name?/:color?/:year?"
+            component={OneCarPage}
+          />
+          <Route path="/carsTabel" component={CarsTable} />
+          <Route path="/home" component={InHome} />
+          <Route path="/login" component={Login} />
+        </Switch>
       </div>
     );
   }
